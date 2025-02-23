@@ -29,8 +29,18 @@ pip install opencv-python numpy ultralytics deep_sort_realtime picamera2
    - Usa `raspi-config` para activarla si es necesario.
 
 3. **Descargar o especificar el modelo YOLO:**
-   - El código usa `yolo11n_ncnn_model` por defecto, pero puedes cambiarlo a otro modelo como `yolov8n.pt`.
-   - Para usar `yolov8n.pt`, descárgalo desde el repositorio de [Ultralytics](https://github.com/ultralytics/yolov5/releases).
+   - El código usa `yolo11n_ncnn_model` por defecto.
+
+## Exportación del Modelo a NCNN
+Si necesitas exportar un modelo YOLO a NCNN para su uso en dispositivos con limitaciones de hardware, sigue estos pasos:
+
+1. **Convertir el modelo YOLO a ONNX:**
+   ```sh
+   yolo export model=yolov11n.pt format=ncnn
+   ```
+   
+2. **Usar el modelo en el código:**
+   - Asegúrate de cambiar `MODEL_PATH` en el script para usar el modelo optimizado.
 
 ## Uso
 Ejecuta el siguiente comando para iniciar la detección y conteo:
